@@ -1,0 +1,21 @@
+{
+  "name": "require-extended-lib",
+  "version": "Extends require with some awesome features",
+  "main": "index.js",
+  "repository": "git@github.com:Acanguven/require-extended.git",
+  "author": "Ahmet Can Güven <ahmetcanguven44@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "coveralls": "^3.0.2",
+    "faker": "^4.1.0",
+    "mocha": "^5.2.0",
+    "mocha-lcov-reporter": "^1.3.0",
+    "nyc": "^13.1.0",
+    "sinon": "^7.1.1",
+    "ts-node": "^7.0.1"
+  },
+  "dependencies": {
+    "app-root-path": "^2.1.0"
+  }
+}

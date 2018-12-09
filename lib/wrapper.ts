@@ -10,13 +10,11 @@ export interface IWrapper {
   removePlugin: (plugin: IPlugin) => void;
 }
 
-const _resolveFilenameRef = Module._resolveFilename;
-const _loadRef = Module._load;
-const _compileRef = Module._compile;
-
 export class Wrapper implements IWrapper {
-  private resolvers: any[] = [];
-  private loaders: any[] = [];
+  _resolveFilenameRef = Module._resolveFilename;
+  _loadRef = Module._load;
+  resolvers: any[] = [];
+  loaders: any[] = [];
 
   addPlugin(plugin: IPlugin) {
     if (plugin.resolver) {
@@ -29,13 +27,8 @@ export class Wrapper implements IWrapper {
   }
 
   removePlugin(plugin: IPlugin) {
-    this.loaders = this.loaders.filter(fn => {
-      return fn.__plugin !== plugin;
-    });
-
-    this.resolvers = this.loaders.filter(fn => {
-      return fn.__plugin !== plugin;
-    });
+    this.loaders = this.loaders.filter(fn => fn.__plugin !== plugin);
+    this.resolvers = this.resolvers.filter(fn => fn.__plugin !== plugin);
   }
 
   wrapModule() {
@@ -45,7 +38,6 @@ export class Wrapper implements IWrapper {
 
     Module._resolveFilename = this._resolveFilename.bind(this);
     Module._load = this._load.bind(this);
-    Module._compile = this._compile.bind(this);
 
     Module._require__extended = this;
 
@@ -54,38 +46,30 @@ export class Wrapper implements IWrapper {
 
   unwrapModule() {
     delete Module._require__extended;
-    Module._resolveFilename = _resolveFilenameRef;
-    Module._load = _loadRef;
-    Module._compile = _compileRef;
+    Module._resolveFilename = this._resolveFilenameRef;
+    Module._load = this._loadRef;
   }
 
-  private connectPluginToFunction(pluginFunction: any, plugin: IPlugin) {
-    const fn = pluginFunction.bind(plugin);
-    Object.defineProperty(fn, '__plugin', {
-      value: plugin
-    });
-    return fn;
-  }
 
-  private _resolveFilename(realRequest: string, realParent: string, realIsMain: boolean) {
+  _resolveFilename(realRequest: string, realParent: string, realIsMain: boolean) {
     const resolveChain = this.resolvers.map((resolver, i) => {
       return (request: string, parent: string, isMain: boolean) => resolver(
         request,
         parent,
         isMain,
-        this.resolvers[i + 1] ? (request: string, parent: string, isMain: boolean) => resolveChain[i + 1](request, parent, isMain) : _resolveFilenameRef,
+        this.resolvers[i + 1] ? (request: string, parent: string, isMain: boolean) => resolveChain[i + 1](request, parent, isMain) : this._resolveFilenameRef,
         (request: string, parent: string, isMain: boolean) => resolveChain[0](request, parent, isMain)
       );
     });
 
     if (resolveChain.length === 0) {
-      return _resolveFilenameRef(realRequest, realParent, realIsMain);
+      return this._resolveFilenameRef(realRequest, realParent, realIsMain);
     }
 
     return resolveChain[0](realRequest, realParent, realIsMain);
   }
 
-  private _load(request: string, parent: string, isMain: boolean) {
+  _load(request: string, parent: string, isMain: boolean) {
     let match = MATCH_RESULT.NO_MATCH;
 
     this.loaders.some(loader => {
@@ -102,12 +86,15 @@ export class Wrapper implements IWrapper {
       return match;
     }
 
-    return _loadRef(...arguments);
+    return this._loadRef(...arguments);
   }
 
 
-  private _compile(content: string, filename: string) {
-
-    return _compileRef(...arguments);
+  private connectPluginToFunction(pluginFunction: any, plugin: IPlugin) {
+    const fn = pluginFunction.bind(plugin);
+    Object.defineProperty(fn, '__plugin', {
+      value: plugin
+    });
+    return fn;
   }
 }

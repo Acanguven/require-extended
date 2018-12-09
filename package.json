@@ -1,5 +1,5 @@
 {
-  "name": "require-extended-lib",
+  "name": "require-extended",
   "version": "0.0.1",
   "description": "Extends require with some awesome features",
   "main": "dist/index.js",

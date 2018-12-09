@@ -1,6 +1,7 @@
 {
   "name": "require-extended-lib",
-  "version": "Extends require with some awesome features",
+  "version": "0.0.1",
+  "description": "Extends require with some awesome features",
   "main": "dist/index.js",
   "repository": "git@github.com:Acanguven/require-extended.git",
   "author": "Ahmet Can Güven <ahmetcanguven44@gmail.com>",

@@ -10,15 +10,16 @@
   "devDependencies": {
     "@types/app-root-path": "^1.2.4",
     "@types/chai": "^4.1.7",
-    "@types/mocha": "^5.2.5",
+    "@types/jest": "^23.3.10",
     "@types/node": "^10.12.12",
     "chai": "^4.2.0",
     "coveralls": "^3.0.2",
     "faker": "^4.1.0",
-    "mocha": "^5.2.0",
+    "jest": "^23.6.0",
     "mocha-lcov-reporter": "^1.3.0",
     "nyc": "^13.1.0",
     "sinon": "^7.1.1",
+    "ts-jest": "^23.10.5",
     "ts-node": "^7.0.1",
     "typescript": "^3.2.2"
   },
@@ -27,6 +28,7 @@
   },
   "scripts": {
     "build": "tsc",
-    "test": "./node_modules/.bin/nyc --check-coverage ./node_modules/mocha/bin/_mocha --require ts-node/register test/**/*.spec.ts"
+    "test": "jest",
+    "test:watch": "jest --watch"
   }
 }

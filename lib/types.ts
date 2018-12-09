@@ -5,3 +5,8 @@ export interface IPlugin {
   resolver?: (request: string, parent: string, isMain: boolean, next: () => any, restart: () => any) => any;
   loader?: (request: string, parent: string, isMain: boolean) => any | MATCH_RESULT;
 }
+
+export interface IRootResolverConfig {
+  enabled: boolean;
+  prefix: string;
+}

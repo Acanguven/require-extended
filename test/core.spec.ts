@@ -39,6 +39,7 @@ describe("[core.ts]", () => {
   it("should create new Core", () => {
     // Arrange
     wrapperMock.expects("wrapModule");
+    wrapperMock.expects("addPlugin").once();
 
     // Act
     const core = new Core(wrapper, helper);
@@ -50,6 +51,7 @@ describe("[core.ts]", () => {
   it("should use app-root-path library to pick default location for project root", () => {
     // Arrange
     wrapperMock.expects("wrapModule");
+    wrapperMock.expects("addPlugin").once();
     const core = new Core(wrapper, helper);
 
     // Assert
@@ -59,6 +61,7 @@ describe("[core.ts]", () => {
   it("should set root", () => {
     // Arrange
     wrapperMock.expects("wrapModule");
+    wrapperMock.expects("addPlugin").once();
     const core = new Core(wrapper, helper);
 
     // Act
@@ -71,6 +74,7 @@ describe("[core.ts]", () => {
   it("should set root when relative path given. Path should be relative to be the caller method", () => {
     // Arrange
     wrapperMock.expects("wrapModule");
+    wrapperMock.expects("addPlugin").once();
     const core = new Core(wrapper, helper);
 
     // Act
@@ -83,7 +87,7 @@ describe("[core.ts]", () => {
   it("should create new binding", () => {
     // Arrange
     wrapperMock.expects("wrapModule");
-    wrapperMock.expects("addPlugin");
+    wrapperMock.expects("addPlugin").twice();
 
     const matcher = faker.random.word();
     const target = faker.random.word();
@@ -99,7 +103,7 @@ describe("[core.ts]", () => {
   it("should create new mimic", () => {
     // Arrange
     wrapperMock.expects("wrapModule");
-    wrapperMock.expects("addPlugin");
+    wrapperMock.expects("addPlugin").twice();
 
     const matcher = faker.random.word();
     const target = faker.random.word();

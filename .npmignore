@@ -1,2 +1,7 @@
 lib/
 test/
+.coveralls.yml
+.travis.yml
+jest.config.js
+.nycrc
+

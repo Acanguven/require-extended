@@ -5,7 +5,7 @@ Extended require with awesome features!
 
 [![Build Status](https://travis-ci.com/Acanguven/require-extended.svg?token=P2s8WVyVNPJgtfCf4E5i&branch=master)](https://travis-ci.com/Acanguven/require-extended)
 [![Coverage Status](https://coveralls.io/repos/github/Acanguven/require-extended/badge.svg?branch=master)](https://coveralls.io/github/Acanguven/require-extended?branch=master)
-
+[![npm version](https://badge.fury.io/js/require-extended.svg)](https://badge.fury.io/js/require-extended)
 ___
 
 This package lets you modify how `require` should work. It adds some cool features like requiring from projects root path or redirecting all `fs` requires to your custom `custom-fs.js` module.

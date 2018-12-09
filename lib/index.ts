@@ -5,4 +5,6 @@ import {Helper} from "./helper";
 const wrapper = new Wrapper();
 const helper = new Helper();
 
-export default (options?: IInitOptions) => new Core(wrapper, helper, options);
+const RequireExtended = (options?: IInitOptions): Core => new Core(wrapper, helper, options);
+
+module.exports = RequireExtended;

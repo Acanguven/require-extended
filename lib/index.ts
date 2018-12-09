@@ -7,7 +7,6 @@ const helper = new Helper();
 let core: Core;
 
 const RequireExtended = (options?: IInitOptions): Core => {
-  console.log('enter');
   if (core) return core;
 
   core = new Core(wrapper, helper, options);

@@ -1,0 +1,27 @@
+{
+"extension": [
+    ".ts",
+    ".spec.ts"
+  ],
+  "exclude": [
+    "dist/**",
+    "**/*.d.ts",
+    "test/**"
+  ],
+  "include": [
+    "lib/**/*.ts"
+  ],
+  "reporter": [
+    "text"
+  ],
+  "all": true,
+  "lines": 100,
+  "statements": 100,
+  "functions": 100,
+  "branches": 100,
+  "branches": 100,
+  "all": true,
+  "require": [
+    "ts-node/register"
+  ]
+}

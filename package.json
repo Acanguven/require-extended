@@ -30,7 +30,7 @@
   },
   "scripts": {
     "build": "tsc",
-    "test": "jest --coverage",
-    "test:watch": "jest --watch --coverage"
+    "test": "jest --coverage --coverageReporters=text-lcov | coveralls",
+    "test:watch": "jest --watch --coverage",
   }
 }

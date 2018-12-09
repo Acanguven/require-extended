@@ -4,7 +4,15 @@ import {Helper} from "./helper";
 
 const wrapper = new Wrapper();
 const helper = new Helper();
+let core: Core;
 
-const RequireExtended = (options?: IInitOptions): Core => new Core(wrapper, helper, options);
+const RequireExtended = (options?: IInitOptions): Core => {
+  console.log('enter');
+  if (core) return core;
+
+  core = new Core(wrapper, helper, options);
+
+  return core;
+};
 
 module.exports = RequireExtended;

@@ -31,6 +31,6 @@
   "scripts": {
     "build": "tsc",
     "test": "jest --coverage --coverageReporters=text-lcov | coveralls",
-    "test:watch": "jest --watch --coverage",
+    "test:watch": "jest --watch --coverage"
   }
 }

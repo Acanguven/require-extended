@@ -10,8 +10,10 @@
   "devDependencies": {
     "@types/app-root-path": "^1.2.4",
     "@types/chai": "^4.1.7",
+    "@types/faker": "^4.1.4",
     "@types/jest": "^23.3.10",
     "@types/node": "^10.12.12",
+    "@types/sinon": "^5.0.7",
     "chai": "^4.2.0",
     "coveralls": "^3.0.2",
     "faker": "^4.1.0",
@@ -28,7 +30,7 @@
   },
   "scripts": {
     "build": "tsc",
-    "test": "jest",
-    "test:watch": "jest --watch"
+    "test": "jest --coverage",
+    "test:watch": "jest --watch --coverage"
   }
 }

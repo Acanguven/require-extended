@@ -56,11 +56,11 @@ requireExtended.setRoot(myCustomRootPath);
 
 ### Bindings
 
-You can return custom variables for require statements using `.bind()` feature.  Bindings define what NodeJs should load for `require`.
+You can return custom variables for require statements using `.binding()` feature.  Bindings define what NodeJs should load for `require`.
 
 ```js
 const requireExtended = require('require-extended')();
-const fsBinding = requireExtended.bind('fs', {
+const fsBinding = requireExtended.binding('fs', {
     readFileSync: () => {
         //custom implementation
     }
@@ -80,7 +80,7 @@ Now, all require calls to `fs` will receive the real `fs` module.
 #### Binding matchers can be string, regex or a function that returns boolean
 ```js
 const requireExtended = require('require-extended')();
-const jsonBinding = requireExtended.bind('./folder/language.json', {langugues: []});
+const jsonBinding = requireExtended.binding('./folder/language.json', {langugues: []});
 ```
 All files that requires `./folder/language.json` will now receive the custom json data.
 
@@ -141,14 +141,14 @@ fsMimic .restore();
 
 ## Testing with `require-extended`
 
-You can `.bind` your third-party libraries to make them return your instances.
+You can `.binding` your third-party libraries to make them return your instances.
 
 ### Sinon
 
 ```js
 const requireExtended = require('require-extended')();
 const sinon = require('sinon');
-const fsBinding = requireExtended.bind('registerLibrary', sinon.spy());
+const fsBinding = requireExtended.binding('registerLibrary', sinon.spy());
 ```
 
 You can return custom objects for testing. So you can easily assure that your important `require` lines are not removed by a coworker.

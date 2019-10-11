@@ -94,7 +94,7 @@ describe("[core.ts]", () => {
     const core = new Core(wrapper, helper);
 
     // Act
-    const binding = core.bind(matcher, target);
+    const binding = core.binding(matcher, target);
 
     // Assert
     expect(binding).to.be.instanceOf(Binding);

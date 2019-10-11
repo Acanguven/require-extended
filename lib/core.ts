@@ -23,7 +23,7 @@ const defaultOptions: IInitOptions = {
 export interface ICore {
   rootPath: string;
   mimic: (matcher: IMatcher, target: string) => IMimic;
-  bind: (matcher: IMatcher, target: any) => IBinding;
+  binding: (matcher: IMatcher, target: any) => IBinding;
   setRoot: (path: string) => void;
 }
 
@@ -47,7 +47,7 @@ export class Core implements ICore {
     return mimic;
   }
 
-  bind(matcher: IMatcher, target: any) {
+  binding(matcher: IMatcher, target: any) {
     const binding = new Binding(this.wrapper, this.helper, matcher, target);
     this.wrapper.addPlugin(binding);
     return binding;

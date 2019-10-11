@@ -14,4 +14,4 @@ const RequireExtended = (options?: IInitOptions): Core => {
   return core;
 };
 
-module.exports = RequireExtended;
+exports = RequireExtended;

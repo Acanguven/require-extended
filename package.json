@@ -30,7 +30,7 @@
     "app-root-path": "^2.1.0"
   },
   "scripts": {
-    "prepublish": "yarn build",
+    "prepublish": "npm run build",
     "build": "tsc",
     "test": "jest --coverage --coverageReporters=text-lcov | coveralls",
     "test:watch": "jest --watch --coverage"

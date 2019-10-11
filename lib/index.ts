@@ -6,7 +6,7 @@ const wrapper = new Wrapper();
 const helper = new Helper();
 let core: Core;
 
-const RequireExtended = (options?: IInitOptions): Core => {
+const requireExtended = (options?: IInitOptions): Core => {
   if (core) return core;
 
   core = new Core(wrapper, helper, options);
@@ -14,4 +14,4 @@ const RequireExtended = (options?: IInitOptions): Core => {
   return core;
 };
 
-exports = RequireExtended;
+export = requireExtended;

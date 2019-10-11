@@ -3,8 +3,9 @@ import {expect} from "chai";
 import sinon from "sinon";
 import {Wrapper} from "../lib/wrapper";
 import {Core} from "../lib/core";
+import requireExtended from "../lib";
 
-const requireExtended = require('../lib');
+
 const sandbox = sinon.createSandbox();
 let core1: Core, core2: Core;
 
@@ -23,7 +24,7 @@ describe("[index.ts]", () => {
     const spy = sandbox.stub(Wrapper.prototype, 'wrapModule');
 
     // Act
-    core1 = require('../lib')();
+    core1 = requireExtended();
 
     // Assert
     expect(core1).to.be.instanceOf(Core);
@@ -35,7 +36,7 @@ describe("[index.ts]", () => {
     const spy = sandbox.stub(Wrapper.prototype, 'wrapModule');
 
     // Act
-    core2 = require('../lib')();
+    core2 = requireExtended();
 
     // Assert
     expect(core2).to.be.instanceOf(Core);
